@@ -18,4 +18,14 @@ feature 'it starts a game of rock, paper, scissors' do
     click_button 'Rock'
     expect(page).to have_content 'Your choice is Rock!'
   end
+
+  scenario 'game chooses a hand' do
+    click_button 'Rock'
+    expect(page).to have_content 'Computer chooses Rock!'
+  end
+
+  def possible_choice
+    [:Rock, :Paper, :Scissors].map { |hand| "'Computer chooses #{hand}!'"}
+  end 
+  
 end
