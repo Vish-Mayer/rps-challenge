@@ -12,9 +12,15 @@ class RockPaperScissors < Sinatra::Base
     redirect '/play'
   end
 
-  get '/play' do
+  get '/play' do 
     @player_1_name = session[:player_1_name]
+    @hand = session[:hand]
     erb :play
+  end
+
+  post '/play' do
+    session[:hand] = params[:hand]
+    redirect '/play'
   end
 
   run! if app_file == $0
