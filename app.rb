@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require_relative './lib/computer'
 
 class RockPaperScissors < Sinatra::Base
 
@@ -21,7 +22,7 @@ class RockPaperScissors < Sinatra::Base
 
   post '/play' do
     session[:hand] = params[:hand]
-    session[:computer_hand] = :Rock 
+    session[:computer_hand] = Computer.new.hand 
     redirect '/play'
   end
 
